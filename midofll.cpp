@@ -4,16 +4,16 @@ class Node
 {
     public:
     int data;
-    Node *next;//storing a address
-    Node(int data)//creating a parameterised constructor
+    Node *next=NULL;
+    Node(int data)
     {
-        this->data=data;//storing data
-        next=NULL;//next element me null
+        this->data=data;
+        this->next=NULL;
     }
 };
 Node *input()//function of node type bcz returning head
 {
-    cout<<"ENTER The data for the list";
+    cout<<"ENTER The data for the list"<<endl;
     int data;
     cin>>data;
     Node *head=NULL;
@@ -40,12 +40,27 @@ void print(Node *head)
         Node *temp=head;
         while(head!=NULL)
         {
-            cout<<head->data<<endl;
+            cout<<head->data<<" ";
             head=head->next;
         }
+        cout<<endl;
     }
+int mid(Node *head)
+{
+    int len=6;//working for both even and odd but change the length 
+    int ans=len/2;
+    int cnt=0;
+    while(cnt<ans)
+    {
+        head=head->next;
+        cnt++;
+    }
+    return head->data;
+}
 int main()
 {
-    Node *head = input();
-	print(head);
+    Node *head=input();
+    print(head);
+    cout<<mid(head);
+
 }

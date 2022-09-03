@@ -4,14 +4,24 @@ class Node
 {
     public:
     int data;
-    Node *next;//storing a address
-    Node(int data)//creating a parameterised constructor
+    Node *next;
+    Node(int data)
     {
-        this->data=data;//storing data
-        next=NULL;//next element me null
+        this->data=data;
+        this->next=NULL;
     }
 };
-Node *input()//function of node type bcz returning head
+void print(Node *head)
+{
+    Node *temp = head;
+    while (temp != NULL)
+    {
+        cout << temp->data<<" ";
+        temp = temp->next;
+    }
+    cout<<endl;
+}
+Node *input()
 {
     cout<<"ENTER The data for the list";
     int data;
@@ -35,17 +45,23 @@ Node *input()//function of node type bcz returning head
     }
     return head;
 }
-void print(Node *head)
+int count(Node *head)
+{
+    Node *temp=head;
+    if(temp==NULL)
     {
-        Node *temp=head;
-        while(head!=NULL)
-        {
-            cout<<head->data<<endl;
-            head=head->next;
-        }
+        return 0;
     }
+    else
+    {
+        return 1+count(head->next);
+    }
+}
 int main()
 {
-    Node *head = input();
+ Node *head = input();
 	print(head);
+   cout<<count(head);
+   
+
 }
